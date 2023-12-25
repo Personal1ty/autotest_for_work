@@ -21,6 +21,11 @@ class LoginPageLocatorsBilbet():
 
 class RegisterPageLocatorsBilbet():
     CLICK_REGISTER_BUTTON = (By.CSS_SELECTOR, '[class="account__register account__btn"]')
-    ACCOUNT_CURRENCY_ALL = (By.CSS_SELECTOR, '[class="currency-select__inner"]')
-
-    
+    ACCOUNT_CURRENCY_SELECT = (By.CSS_SELECTOR, '[class="currency-select__inner"]')
+    ACCOUNT_CURRENCY_INR = (By.CSS_SELECTOR, '.currency-select-popper__item:nth-child(2)')
+    ACCOUNT_CURRENCY_UZS = (By.CSS_SELECTOR, '.currency-select-popper__item:nth-child(3)') 
+    ACCOUNT_CURRENCY_BDT = (By.CSS_SELECTOR, '.currency-select-popper__item:nth-child(4)')
+    REG_WELCOME_BONUS = (By.CSS_SELECTOR, '[class="registration-bonus__content"]')
+    REG_WELCOME_BONUS_CASINO = (By.CSS_SELECTOR, '.registration-bonus:nth-child(1)')
+    REG_WELCOME_BONUS_SPORT = (By.CSS_SELECTOR, '.registration-bonus:nth-child(2)')
+    REG_WELCOME_BONUS_PROMOCODE = (By.CSS_SELECTOR, '.registration-bonus:nth-child(3)')

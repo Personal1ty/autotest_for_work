@@ -10,12 +10,19 @@ class RegisterPageBilbet(BasePage):
         start_register_button.click()
 
     def check_select_currency(self):
-        assert self.is_element_present(*RegisterPageLocatorsBilbet.ACCOUNT_CURRENCY_ALL), "currency ON"
-        #select_account_currency = self.browser.find_element(*RegisterPageLocatorsBilbet.ACCOUNT_CURRENCY_ALL)
-        #select_account_currency.click()
-        select_currency =  Select(self.browser.find_element(*RegisterPageLocatorsBilbet.ACCOUNT_CURRENCY_ALL))
-        assert select_currency.select_by_index("1"), "1"
-        assert select_currency.select_by_index("2"), "2"
-        assert select_currency.select_by_index("3"), "3"
-    #def select_account_currency(self):
-    #    return
+        #проверка валют общая + каждая валюта, все должны быть по умолчанию включены
+        assert self.is_element_present(*RegisterPageLocatorsBilbet.ACCOUNT_CURRENCY_SELECT), "currency OFF"
+        assert self.is_element_present(*RegisterPageLocatorsBilbet.ACCOUNT_CURRENCY_INR), "currency INR OFF"
+        assert self.is_element_present(*RegisterPageLocatorsBilbet.ACCOUNT_CURRENCY_UZS), "currency UZS OFF"  
+        assert self.is_element_present(*RegisterPageLocatorsBilbet.ACCOUNT_CURRENCY_BDT), "currency BDT OFF"
+
+        #тут добавить выбор локали!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        time.sleep(3)
+    def check_welcome_bonus(self):
+        click_account_currency = self.browser.find_element(*RegisterPageLocatorsBilbet.REG_WELCOME_BONUS)
+        click_account_currency.click()
+        time.sleep(3)
+        assert self.is_element_present(*RegisterPageLocatorsBilbet.REG_WELCOME_BONUS_CASINO), "casino bonus OFF"
+        assert self.is_element_present(*RegisterPageLocatorsBilbet.REG_WELCOME_BONUS_SPORT), "sport bonus OFF"
+        assert self.is_element_present(*RegisterPageLocatorsBilbet.REG_WELCOME_BONUS_PROMOCODE), "promocode bonus OFF"

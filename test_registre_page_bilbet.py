@@ -7,3 +7,4 @@ def test_guest_can_do_register(browser):
     page.open()
     page.clicked_register_page()
     page.check_select_currency()
+    page.check_welcome_bonus()
