@@ -12,7 +12,5 @@ def test_guest_can_do_to_login_page(browser):
     page.clicked_auth_button()
     page.check_error_email_and_pass_auth_popup()
     page.chek_error_phone_number_auth_popup()         
-    #page.fill_it_out_login()
-    #page.fill_it_out_pass()
-    #page.clicked_authorization_button()
+    page.finall_auth_user()
    

@@ -22,6 +22,7 @@ class LoginPageLocatorsBilbet():
     INPUT_PHONE = (By.CSS_SELECTOR,'[testid="registration-phone"]')
     INPUT_PASS_PHONE = (By.CSS_SELECTOR, '[testid="login-password"]')
     PHONE_ERROR = (By.CSS_SELECTOR, '[testid="registration-phone-error"]')
+    FORGOT_PASSWORD = (By.CSS_SELECTOR, '[class="form-item__forgot-password"]')
     
 class RegisterPageLocatorsBilbet():
     CLICK_REGISTER_BUTTON = (By.CSS_SELECTOR, '[class="account__register account__btn"]')
