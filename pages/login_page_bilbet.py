@@ -4,22 +4,34 @@ import time
 
 class LoginPageBilbet(BasePage):
 
-    def clicked_auth_button(self):
+    def clicked_input_password_button(self):
+        pass_input = self.browser.find_element(*LoginPageLocatorsBilbet.INPUT_PASS)
+        pass_input.send_keys("")   
+
+    def authorization_button(self):
+        authorization_button = self.browser.find_element(*LoginPageLocatorsBilbet.CLICK_AUTHORIZATION_BUTTON)
+        authorization_button.click()
+
+    def input_email(self):
+        return self.browser.find_element(*LoginPageLocatorsBilbet.INPUT_EMAIL)
+        
+    def check_password_error(self):
+        assert self.is_element_present(*LoginPageLocatorsBilbet.PASS_ERROR), "PASS ERROR IS NOT"
+        
+    def clicked_account_auth_button(self):
         start_login_button = self.browser.find_element(*LoginPageLocatorsBilbet.CLICK_LOGIN_BUTTON)
         start_login_button.click()
         print("click login button")
     
     def check_error_email_and_pass_auth_popup(self): 
-        login_input = self.browser.find_element(*LoginPageLocatorsBilbet.INPUT_EMAIL)
-        login_input.send_keys("test")
-        pass_input = self.browser.find_element(*LoginPageLocatorsBilbet.INPUT_PASS)
-        pass_input.send_keys("test")
-        authorization_button = self.browser.find_element(*LoginPageLocatorsBilbet.CLICK_AUTHORIZATION_BUTTON)
-        authorization_button.click()
+        self.input_email().send_keys("test")        
+        self.clicked_input_password_button()
+        self.authorization_button()
+        self.check_password_error()        
         assert self.is_element_present(*LoginPageLocatorsBilbet.LOGIN_ERROR), "LOGIN ERROR IS NOT"
-        assert self.is_element_present(*LoginPageLocatorsBilbet.PASS_ERROR), "PASS ERROR IS NOT"
         assert self.is_element_present(*LoginPageLocatorsBilbet.FORGOT_PASSWORD), "FOGOT PASSWORD IS NOT"
         print("check error auth popup")
+        #подумать как добавить проверку Sign Up
           
     def chek_error_phone_number_auth_popup(self):
         click_phone = self.browser.find_element(*LoginPageLocatorsBilbet.CLICK_PHONE)
@@ -27,20 +39,16 @@ class LoginPageBilbet(BasePage):
         input_phone = self.browser.find_element(*LoginPageLocatorsBilbet.INPUT_PHONE)
         input_phone.clear()
         input_phone.send_keys("78478")
-        input_pass = self.browser.find_element(*LoginPageLocatorsBilbet.INPUT_PASS)
-        input_pass.send_keys("test")
-        authorization_button = self.browser.find_element(*LoginPageLocatorsBilbet.CLICK_AUTHORIZATION_BUTTON)
-        authorization_button.click()
+        self.clicked_input_password_button()
+        self.authorization_button()
         assert self.is_element_present(*LoginPageLocatorsBilbet.PHONE_ERROR), "PHONE ERROR IS NOT"
-        assert self.is_element_present(*LoginPageLocatorsBilbet.PASS_ERROR), "PASS ERROR IS NOT"
+        self.check_password_error()
         print("check error auth for phone popup")        
     #ввожу логин    
     def finall_auth_user(self):
-        login_input = self.browser.find_element(*LoginPageLocatorsBilbet.INPUT_EMAIL)
-        login_input.send_keys("test") 
-        pass_input = self.browser.find_element(*LoginPageLocatorsBilbet.INPUT_PASS)
-        pass_input.send_keys("")    
-        authorization_button = self.browser.find_element(*LoginPageLocatorsBilbet.CLICK_AUTHORIZATION_BUTTON)
-        authorization_button.click()    
-        time.sleep(3)
+        click_email = self.browser.find_element(*LoginPageLocatorsBilbet.CLICK_EMAIL)
+        click_email.click()
+        self.input_email().send_keys("testdep@gmail.com")
+        self.clicked_input_password_button()     
+        self.authorization_button()  
         print("user login success") 
