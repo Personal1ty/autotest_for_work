@@ -18,11 +18,12 @@ class LoginPageLocatorsBilbet():
     CLICK_AUTHORIZATION_BUTTON = (By.CSS_SELECTOR, '[class="submit-button auth-content-form__submit"]')
     LOGIN_ERROR = (By.CSS_SELECTOR, '[testid="login-email-error"]')
     PASS_ERROR = (By.CSS_SELECTOR, '[testid="login-password-error"]')
-    CLICK_PHONE = (By.CSS_SELECTOR, '[class="form-type-tabs__tab"]')
     INPUT_PHONE = (By.CSS_SELECTOR,'[testid="registration-phone"]')
     INPUT_PASS_PHONE = (By.CSS_SELECTOR, '[testid="login-password"]')
     PHONE_ERROR = (By.CSS_SELECTOR, '[testid="registration-phone-error"]')
     FORGOT_PASSWORD = (By.CSS_SELECTOR, '[class="form-item__forgot-password"]')
+    CLICK_PHONE = (By.CSS_SELECTOR, '[class="form-type-tabs__tab"]')
+    CLICK_EMAIL = (By.CSS_SELECTOR, '[class="form-type-tabs__tab"]')
     
 class RegisterPageLocatorsBilbet():
     CLICK_REGISTER_BUTTON = (By.CSS_SELECTOR, '[class="account__register account__btn"]')

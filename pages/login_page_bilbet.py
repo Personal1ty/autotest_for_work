@@ -6,7 +6,7 @@ class LoginPageBilbet(BasePage):
 
     def clicked_input_password_button(self):
         pass_input = self.browser.find_element(*LoginPageLocatorsBilbet.INPUT_PASS)
-        pass_input.send_keys("")   
+        pass_input.send_keys("сдесь должен быть пароль пользователя")   
 
     def authorization_button(self):
         authorization_button = self.browser.find_element(*LoginPageLocatorsBilbet.CLICK_AUTHORIZATION_BUTTON)
@@ -48,7 +48,7 @@ class LoginPageBilbet(BasePage):
     def finall_auth_user(self):
         click_email = self.browser.find_element(*LoginPageLocatorsBilbet.CLICK_EMAIL)
         click_email.click()
-        self.input_email().send_keys("testdep@gmail.com")
+        self.input_email().send_keys("тут должен быть емайл пользователя")
         self.clicked_input_password_button()     
         self.authorization_button()  
         print("user login success") 

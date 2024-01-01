@@ -3,7 +3,19 @@ from .base_page import BasePage
 import time
 
 class RegisterPageBilbet(BasePage):
-    def clicked_register_popup(self):
+
+    def input_login(self):
+        return self.browser.find_element(*RegisterPageLocatorsBilbet.INPUT_LOGIN)
+    
+    def input_register_pass(self):        
+        return self.browser.find_element(*RegisterPageLocatorsBilbet.INPUT_PASS)
+    
+    def click_create_account_button(self):
+        return self.browser.find_element(*RegisterPageLocatorsBilbet.CLICK_CREATE_ACCOUNT)
+        #click_register_button.click()
+        
+    
+    def clicked_register_button(self):
         start_register_button = self.browser.find_element(*RegisterPageLocatorsBilbet.CLICK_REGISTER_BUTTON)
         start_register_button.click()
         print("click registration button")
@@ -34,26 +46,20 @@ class RegisterPageBilbet(BasePage):
     
     #проверка ошибки логина и пароля, логин без собаки, пароль короткий
     def check_correct_email_and_pass_register_popup(self):
-        input_register_login = self.browser.find_element(*RegisterPageLocatorsBilbet.INPUT_LOGIN)
-        input_register_login.send_keys("test")
-        input_register_pass = self.browser.find_element(*RegisterPageLocatorsBilbet.INPUT_PASS)
-        input_register_pass.send_keys("pass")
-        click_register_button = self.browser.find_element(*RegisterPageLocatorsBilbet.CLICK_CREATE_ACCOUNT)
-        click_register_button.click()
+        self.input_login().send_keys("test")
+        self.input_register_pass().send_keys("pass")
+        self.click_create_account_button().click()
         assert self.is_element_present(*RegisterPageLocatorsBilbet.REGISTER_EMAIL_ERROR), "No error if input incorrect email"
         assert self.is_element_present(*RegisterPageLocatorsBilbet.REGISTER_PASS_ERROR), "No error if input incorrect pass"
         print("check error register popup")
     
     #региструем пользователя
     def input_registration_credentials_register_popup(self):
-        self.browser.find_element(*RegisterPageLocatorsBilbet.INPUT_LOGIN).clear()
-        input_register_login = self.browser.find_element(*RegisterPageLocatorsBilbet.INPUT_LOGIN)
-        user_credentials = str(time.time())
-        input_register_login.send_keys("test" + user_credentials + "@gmail.com")
-        self.browser.find_element(*RegisterPageLocatorsBilbet.INPUT_PASS).clear()
-        input_register_pass = self.browser.find_element(*RegisterPageLocatorsBilbet.INPUT_PASS)
-        input_register_pass.send_keys(user_credentials)
-        click_register_button = self.browser.find_element(*RegisterPageLocatorsBilbet.CLICK_CREATE_ACCOUNT)
-        click_register_button.click()
+        self.input_login().clear()
+        generat_user_credentials = str(time.time())
+        self.input_login().send_keys("test" + generat_user_credentials + "@gmail.com")
+        self.input_register_pass().clear()
+        self.input_register_pass().send_keys(generat_user_credentials)
+        self.click_create_account_button().click()
         assert self.is_element_present(*RegisterPageLocatorsBilbet.REGISTRATION_POPUP), "registeration not finish "
         print("registration user register popup")    
