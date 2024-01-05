@@ -5,8 +5,7 @@ import time
 class LoginPageBilbet(BasePage):
 
     def clicked_input_password_button(self):
-        pass_input = self.browser.find_element(*LoginPageLocatorsBilbet.INPUT_PASS)
-        pass_input.send_keys("сдесь должен быть пароль пользователя")   
+        return self.browser.find_element(*LoginPageLocatorsBilbet.INPUT_PASS)
 
     def authorization_button(self):
         authorization_button = self.browser.find_element(*LoginPageLocatorsBilbet.CLICK_AUTHORIZATION_BUTTON)
@@ -25,7 +24,7 @@ class LoginPageBilbet(BasePage):
     
     def check_error_email_and_pass_auth_popup(self): 
         self.input_email().send_keys("test")        
-        self.clicked_input_password_button()
+        self.clicked_input_password_button().send_keys("test")
         self.authorization_button()
         self.check_password_error()        
         assert self.is_element_present(*LoginPageLocatorsBilbet.LOGIN_ERROR), "LOGIN ERROR IS NOT"
@@ -39,16 +38,16 @@ class LoginPageBilbet(BasePage):
         input_phone = self.browser.find_element(*LoginPageLocatorsBilbet.INPUT_PHONE)
         input_phone.clear()
         input_phone.send_keys("78478")
-        self.clicked_input_password_button()
+        self.clicked_input_password_button().send_keys("test")
         self.authorization_button()
         assert self.is_element_present(*LoginPageLocatorsBilbet.PHONE_ERROR), "PHONE ERROR IS NOT"
         self.check_password_error()
+        click_email = self.browser.find_element(*LoginPageLocatorsBilbet.CLICK_EMAIL)
+        click_email.click()
         print("check error auth for phone popup")        
     #ввожу логин    
     def finall_auth_user(self):
-        click_email = self.browser.find_element(*LoginPageLocatorsBilbet.CLICK_EMAIL)
-        click_email.click()
-        self.input_email().send_keys("тут должен быть емайл пользователя")
-        self.clicked_input_password_button()     
-        self.authorization_button()  
+        self.input_email().send_keys("testdep@gmail.com")
+        self.clicked_input_password_button().send_keys("testdep@gmail.com")
+        self.authorization_button()
         print("user login success") 

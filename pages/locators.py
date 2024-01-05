@@ -48,3 +48,6 @@ class RegisterPageLocatorsBilbet():
     CLICK_CREATE_ACCOUNT = (By.CSS_SELECTOR, '[testid="registration-submit-btn"]')
     REGISTRATION_POPUP = (By.CSS_SELECTOR, '[class="registration-popup__title"]')
     
+class CasinoPageLocatorsBilbet():
+    INPUT_DEP = (By.CSS_SELECTOR, '[class="account__deposit-btn"]')
+    VERIFICATION_POPUP = (By.CSS_SELECTOR, '[class="mail-verification__close"]')    

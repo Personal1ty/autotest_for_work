@@ -12,8 +12,6 @@ class RegisterPageBilbet(BasePage):
     
     def click_create_account_button(self):
         return self.browser.find_element(*RegisterPageLocatorsBilbet.CLICK_CREATE_ACCOUNT)
-        #click_register_button.click()
-        
     
     def clicked_register_button(self):
         start_register_button = self.browser.find_element(*RegisterPageLocatorsBilbet.CLICK_REGISTER_BUTTON)
