@@ -1,6 +1,7 @@
 from .base_page import BasePage
 from .locators import LoginPageLocatorsBilbet
 import time
+from accesses_config import Accesses
 
 class LoginPageBilbet(BasePage):
 
@@ -47,7 +48,7 @@ class LoginPageBilbet(BasePage):
         print("check error auth for phone popup")        
     #ввожу логин    
     def finall_auth_user(self):
-        self.input_email().send_keys("testdep@gmail.com")
-        self.clicked_input_password_button().send_keys("testdep@gmail.com")
+        self.input_email().send_keys(*Accesses.login_for_auth)
+        self.clicked_input_password_button().send_keys(*Accesses.password_for_auth)
         self.authorization_button()
         print("user login success") 

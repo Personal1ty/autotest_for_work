@@ -1,5 +1,8 @@
 from selenium.webdriver.common.by import By
 
+class GeneralPageLocators():
+    CLOSE_MOBILE_DEP_POPUP = (By.CSS_SELECTOR, '[class="user-modal__close"]')
+    PLAY_MOBILE_CASINO_GAME = (By.CSS_SELECTOR, '[class="user-casino-game-card__image"]')
 
 class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
@@ -49,5 +52,12 @@ class RegisterPageLocatorsBilbet():
     REGISTRATION_POPUP = (By.CSS_SELECTOR, '[class="registration-popup__title"]')
     
 class CasinoPageLocatorsBilbet():
+    APP_HEADER_LOGO = (By.CSS_SELECTOR, '[class="app-header__logo"]')
     INPUT_DEP = (By.CSS_SELECTOR, '[class="account__deposit-btn"]')
-    VERIFICATION_POPUP = (By.CSS_SELECTOR, '[class="mail-verification__close"]')    
+    VERIFICATION_POPUP = (By.CSS_SELECTOR, '[class="mail-verification__close"]')
+    HEADER_AVIATOR_BUTTON = (By.CSS_SELECTOR, '[class="app-header__action app-header__action--aviator"]')
+    HEADER_ANDROID_BUTTON = (By.CSS_SELECTOR, '[class="app-header-android-btn"]')
+    HEADER_SEARCH_CASINO_GAME = (By.CSS_SELECTOR, '.casino-menu-header__icon:nth-child(4)')
+    INPUT_SEARCH_CASINO_GAME = (By.CSS_SELECTOR, '[class="user-casino-search__input"]')
+    PLAYNG_SEARCH_GAME = (By.CSS_SELECTOR, '[class="game-card-overlay__btn"]')
+    CHECK_GAME_CONTAINER = (By.CSS_SELECTOR, '[class="user-casino-game__game-wrapper"]')
