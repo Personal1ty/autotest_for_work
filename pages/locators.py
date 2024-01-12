@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 class GeneralPageLocators():
     CLOSE_MOBILE_DEP_POPUP = (By.CSS_SELECTOR, '[class="user-modal__close"]')
     PLAY_MOBILE_CASINO_GAME = (By.CSS_SELECTOR, '[class="user-casino-game-card__image"]')
-
+    PLAYNG_DESKTOP_CASINO_GAME = (By.CSS_SELECTOR, '[class="game-card-overlay__btn"]')
 class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
@@ -59,5 +59,4 @@ class CasinoPageLocatorsBilbet():
     HEADER_ANDROID_BUTTON = (By.CSS_SELECTOR, '[class="app-header-android-btn"]')
     HEADER_SEARCH_CASINO_GAME = (By.CSS_SELECTOR, '.casino-menu-header__icon:nth-child(4)')
     INPUT_SEARCH_CASINO_GAME = (By.CSS_SELECTOR, '[class="user-casino-search__input"]')
-    PLAYNG_SEARCH_GAME = (By.CSS_SELECTOR, '[class="game-card-overlay__btn"]')
-    CHECK_GAME_CONTAINER = (By.CSS_SELECTOR, '[class="user-casino-game__game-wrapper"]')
+    CHECK_GAME_CONTAINER_FOR_POPULAR = (By.CSS_SELECTOR, '[class="user-casino-games__section"]')
