@@ -1,9 +1,13 @@
 from selenium.webdriver.common.by import By
 
+
+
 class GeneralPageLocators():
     CLOSE_MOBILE_DEP_POPUP = (By.CSS_SELECTOR, '[class="user-modal__close"]')
     PLAY_MOBILE_CASINO_GAME = (By.CSS_SELECTOR, '[class="user-casino-game-card__image"]')
     PLAYNG_DESKTOP_CASINO_GAME = (By.CSS_SELECTOR, '[class="game-card-overlay__btn"]')
+    INSIDE_THE_GAME_BUTTON_HOME = (By.CSS_SELECTOR, '[class="user-casino-game-menu__item-btn"]')
+
 class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
@@ -52,11 +56,24 @@ class RegisterPageLocatorsBilbet():
     REGISTRATION_POPUP = (By.CSS_SELECTOR, '[class="registration-popup__title"]')
     
 class CasinoPageLocatorsBilbet():
-    APP_HEADER_LOGO = (By.CSS_SELECTOR, '[class="app-header__logo"]')
+    CASINO_HEADER_HOME_LOGO = (By.CSS_SELECTOR, '[class="app-header__logo"]')
     INPUT_DEP = (By.CSS_SELECTOR, '[class="account__deposit-btn"]')
     VERIFICATION_POPUP = (By.CSS_SELECTOR, '[class="mail-verification__close"]')
-    HEADER_AVIATOR_BUTTON = (By.CSS_SELECTOR, '[class="app-header__action app-header__action--aviator"]')
+    HEADER_GAME_BUTTON = (By.CSS_SELECTOR, '[class="top-game-button"]:nth-child(1)')
+    HEADER_GAME_BUTTON_2 = (By.CSS_SELECTOR, '[class="top-game-button"]:nth-child(2)')
     HEADER_ANDROID_BUTTON = (By.CSS_SELECTOR, '[class="app-header-android-btn"]')
+    FOOTER_TELEGRAM_ICON = (By.CSS_SELECTOR, '[class="socials__content--item socials__content--tg"]')
+    FOOTER_INSTAGRAM_ICON = (By.CSS_SELECTOR, '[class="socials__content--item socials__content--ig"]')
+    FOOTER_FB_ICON = (By.CSS_SELECTOR, '[class="socials__content--item socials__content--fb"]')
+    #HEADER_SEARCH_CASINO_GAME = (By.CSS_SELECTOR, '.casino-menu-header__icon:nth-child(4)')
+    #INPUT_SEARCH_CASINO_GAME = (By.CSS_SELECTOR, '[class="user-casino-search__input"]')
+    #CHECK_GAME_CONTAINER_FOR_POPULAR = (By.CSS_SELECTOR, '[class="user-casino-games__section"]')
+    CAROUSEL_BANNERS_BUTTON = (By.CSS_SELECTOR, '[class="owl-dot"]')
+    #USER_CASINO_SEARCH_ERROR = (By.CSS_SELECTOR, '[class="user-casino-search__error"]')
+    APP_FOOTER_DESKTOP = (By.CSS_SELECTOR, '[class="page-info-item__header"]')  
+   
+class CasinoPageSearchLocatorsBilbet():   
     HEADER_SEARCH_CASINO_GAME = (By.CSS_SELECTOR, '.casino-menu-header__icon:nth-child(4)')
-    INPUT_SEARCH_CASINO_GAME = (By.CSS_SELECTOR, '[class="user-casino-search__input"]')
+    USER_CASINO_SEARCH_ERROR = (By.CSS_SELECTOR, '[class="user-casino-search__error"]')
     CHECK_GAME_CONTAINER_FOR_POPULAR = (By.CSS_SELECTOR, '[class="user-casino-games__section"]')
+    INPUT_SEARCH_CASINO_GAME = (By.CSS_SELECTOR, '[class="user-casino-search__input"]')
