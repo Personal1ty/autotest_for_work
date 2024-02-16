@@ -53,15 +53,17 @@ class CasinoPageBilbet(BasePage):
             print("verification popup close")
         else:
             print("verification popup is not")
-        #проверка наличия кнопки авиатор в хедере сайта  
-                      
+
+        #проверка наличия кнопки авиатор в хедере сайта               
     def header_game_buttons(self):
         assert self.is_element_present(*CasinoPageLocatorsBilbet.HEADER_GAME_BUTTON), "aviator button in header is not"
         self.find_element(*CasinoPageLocatorsBilbet.HEADER_GAME_BUTTON).click()
-        self.inside_the_game_button_home()
+        time.sleep(5)
+        self.deposit_popup_close()
+        time.sleep(5)
         assert self.is_element_present(*CasinoPageLocatorsBilbet.HEADER_GAME_BUTTON_2), "jet x button in header is not"
         self.find_element(*CasinoPageLocatorsBilbet.HEADER_GAME_BUTTON_2).click()
-        self.inside_the_game_button_home()
+        self.deposit_popup_close()
         print("aviator button success")
         #проверка кнопки скачивания приложения в хедере сайта
 
@@ -82,7 +84,7 @@ class CasinoPageBilbet(BasePage):
         self.deposit_popup_close()
         #self.inside_the_game_button_home()
         #self.deposit_popup_close()
-        
+        print("game main page success")
 
     def footer_socials_buttons(self):
         #просто скроллим до футера, иначе тест не видит все элементы в футере
@@ -106,29 +108,10 @@ class CasinoPageBilbet(BasePage):
         assert self.is_element_present(*CasinoPageLocatorsBilbet.FOOTER_TELEGRAM_ICON), "TELEGA icon is not"
         telega_icon_in_footer = self.find_element(*CasinoPageLocatorsBilbet.FOOTER_TELEGRAM_ICON).get_attribute("href")
         if "https://t.me/bilbet_official" in telega_icon_in_footer:
-            print("Reference instagram success")
+            print("Reference TELEGA success")
         else:
-            print("Reference instagram error")        
-        time.sleep(5)
+            print("Reference TELEGA error")        
        
-       
-       
-        #element = self.browser.find_element(By.LINK_TEXT, "Affiliate program")
-        #people_checked = element.get_attribute("href")
-        #print("value of people radio: ", people_checked)
-        #assert people_checked is not None, "People radio is not selected by default"
-
-
-
-
-        #self.browser.execute_script("return arguments[0].scrollIntoView(true);", element)
-
-        #robots_checked = element.get_attribute("href")
-        
-        #element_text = element.text
-        #print(element_text)
-
-
     # def casino_header_search(self):
     #     search_element_click = self.browser.find_element(*CasinoPageLocatorsBilbet.HEADER_SEARCH_CASINO_GAME)
     #     search_element_click.click()
