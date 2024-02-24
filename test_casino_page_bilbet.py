@@ -4,6 +4,7 @@ from .pages.deposits_page_bilbet import CasinoDepositsPage
 import time
 import pytest
 from .accesses_config import Accesses
+from .API_transaction import CreateTransction
 
 
 
@@ -48,17 +49,21 @@ class TestCasinoDepositPage():
         page = LoginPageBilbet(browser, link)    
         # открываем страницу
         page.open()
+        page.vpn_message_close()
         page.clicked_account_auth_button()    
         page.finall_auth_user()
         deposit_page = CasinoDepositsPage(browser, browser.current_url)
         deposit_page.deposit_popup_close()
-        deposit_page.get_token()
-        deposit_page.create_manual_transaction_for_kassma()
+        deposit_page.verification_popup_close()
+        #x = CreateTransction.create_manual_transaction_for_kassma()
+        #print(x)
+        #deposit_page.create_manual_transaction_for_kassma()
         deposit_page.open_deposit_popup()
         deposit_page.select_paytm()
         deposit_page.input_amount()
         deposit_page.click_pay_button()
-        deposit_page.input_transaction_id()
+        x = CreateTransction.create_manual_transaction_for_kassma()
+        deposit_page.input_transaction_id(x)
 
 
         

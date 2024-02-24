@@ -4,9 +4,10 @@ from selenium.webdriver.common.by import By
 
 class GeneralPageLocators():
     CLOSE_MOBILE_DEP_POPUP = (By.CSS_SELECTOR, '[class="user-modal__close"]')
-    PLAY_MOBILE_CASINO_GAME = (By.CSS_SELECTOR, '[class="user-casino-game-card__image"]')
+    PLAY_MOBILE_CASINO_GAME = (By.CSS_SELECTOR, '[class="app-picture user-casino-game-card__image"]')
     PLAYNG_DESKTOP_CASINO_GAME = (By.CSS_SELECTOR, '[class="game-card-overlay__btn"]')
     INSIDE_THE_GAME_BUTTON_HOME = (By.CSS_SELECTOR, '[class="user-casino-game-menu__item-btn"]')
+    VPN_MESSAGE = (By.CSS_SELECTOR, '[class="el-icon-close slow-internet-message__close-icon"]')
 
 class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
@@ -56,7 +57,7 @@ class RegisterPageLocatorsBilbet():
     REGISTRATION_POPUP = (By.CSS_SELECTOR, '[class="registration-popup__title"]')
     
 class CasinoPageLocatorsBilbet():
-    CASINO_HEADER_HOME_LOGO = (By.CSS_SELECTOR, '[class="app-header__logo"]')
+    CASINO_HEADER_HOME_LOGO = (By.CSS_SELECTOR, '[class="app-picture app-header__logo"]')
     INPUT_DEP = (By.CSS_SELECTOR, '[class="account__deposit-btn"]')
     VERIFICATION_POPUP = (By.CSS_SELECTOR, '[class="mail-verification__close"]')
     HEADER_GAME_BUTTON = (By.CSS_SELECTOR, '[class="top-game-button"]:nth-child(1)')
@@ -69,7 +70,7 @@ class CasinoPageLocatorsBilbet():
     #INPUT_SEARCH_CASINO_GAME = (By.CSS_SELECTOR, '[class="user-casino-search__input"]')
     #CHECK_GAME_CONTAINER_FOR_POPULAR = (By.CSS_SELECTOR, '[class="user-casino-games__section"]')
     CAROUSEL_BANNERS_BUTTON = (By.CSS_SELECTOR, '[class="owl-dot"]')
-    #USER_CASINO_SEARCH_ERROR = (By.CSS_SELECTOR, '[class="user-casino-search__error"]')
+    #USER_CASINO_SEARCH_ERROR = (By.CSS_SELECTOR, '[class="user-casino-search__error"]')class="app-header__logo"
     APP_FOOTER_DESKTOP = (By.CSS_SELECTOR, '[class="page-info-item__header"]')  
    
 class CasinoPageSearchLocatorsBilbet():   
@@ -77,3 +78,11 @@ class CasinoPageSearchLocatorsBilbet():
     USER_CASINO_SEARCH_ERROR = (By.CSS_SELECTOR, '[class="user-casino-search__error"]')
     CHECK_GAME_CONTAINER_FOR_POPULAR = (By.CSS_SELECTOR, '[class="user-casino-games__section"]')
     INPUT_SEARCH_CASINO_GAME = (By.CSS_SELECTOR, '[class="user-casino-search__input"]')
+
+
+class CasinoPageDepositLocatorsBilbet():
+    SELECT_PAYTM =  (By.CSS_SELECTOR, '[class="payment-card mobile-payment-methods__card"]')  
+    AMOUNT_INPUT_FORM = (By.CSS_SELECTOR, '[class="form-item__inner"]')
+    SELECT_DEPOSIT_AMOUNT = (By.CSS_SELECTOR, '[class="mobile-amount-card"]')
+    PAY_BUTTON = (By.CSS_SELECTOR, '[class="mobile-deposit__footer-pay-btn"]')
+    INPUT_TRANSACTION_ID = (By.CSS_SELECTOR, '[class="form-item__input"]')

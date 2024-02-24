@@ -3,102 +3,69 @@ from .locators import CasinoPageLocatorsBilbet
 from .locators import GeneralPageLocators
 from .locators import CasinoPageDepositLocatorsBilbet
 import time
-import logging
 from selenium.webdriver.common.by import By
 import json
 import requests
 import time
-from requests.auth import HTTPBasicAuth
+from dotenv import load_dotenv
+import os
+
+
+
 
 class CasinoDepositsPage(BasePage):
-
+    
     def deposit_popup_close(self):  #временный метод, после связи удалить
-        time.sleep(5)
+        time.sleep(3)
         deposit_popup = self.is_element_present(*GeneralPageLocators.CLOSE_MOBILE_DEP_POPUP)
         if deposit_popup == True:
-           return self.find_element(*GeneralPageLocators.CLOSE_MOBILE_DEP_POPUP).click()
+           return self.browser.find_element(*GeneralPageLocators.CLOSE_MOBILE_DEP_POPUP).click()
         else:
             print("there is money in the account") 
-        print("deposit popup close") 
+        print("deposit popup close")
 
-    def get_token(username, password):
-        url = '' 
-        payload = {
-            'name': username,
-            'password': password
-        }
-        headers = {
-            'Content-Type': 'application/json'
-        }
-
-        response = requests.post(url, json=payload, headers=headers)
-
-        if response.status_code == 200:
-            data = response.json()
-            array = data.get('data')
-            token = array['token']
-            if token:
-                return token
-            else:
-                print("Токен не найден в ответе.")
-                return None
+    def vpn_message_close(self):
+        vpn_message_close = self.is_element_present(*GeneralPageLocators.VPN_MESSAGE)
+        if vpn_message_close == True:
+            print("VPN messge close")
+            return vpn_message_close.click()
         else:
-            print(f"Не удалось выполнить запрос. Код состояния: {response.status_code}")
-            return None
+            print("VPN message is not")
+            
 
-
-
-    def create_manual_transaction_for_kassma(self):
-        url = ""
-        username = ''
-        password = ''
-
-        token = self.get_token(username, password)
-
-        time_value = time.time()
-        transaction_id = int(time_value)
-
-        payload = {
-        "type": 1,
-        "activate": False,
-        "currency_code": "INR",
-        "wallet_type": "paytm",
-        "transaction_id": f"{transaction_id}",
-        "amount": "500",
-        "exchange_identifier": "1"
-        }
-
-        headers = {
-            'Content-Type': 'application/json',
-            'Authorization': f'Bearer {token}'
-        }
-        
-        response = requests.post(url, json=payload, headers=headers)
-        data = response.json()
-        if response.status_code == 200:
-            print("Кошелек успешно создан")
-            return transaction_id
+    def verification_popup_close(self):            
+        #проверяем, есть ли попап с просьбой о верификации, почему то иногда не появляется
+        verification_popup = self.is_element_present(*CasinoPageLocatorsBilbet.VERIFICATION_POPUP)
+        if verification_popup == True:
+            self.browser.find_element(*CasinoPageLocatorsBilbet.VERIFICATION_POPUP).click()
+            print("verification popup close")
         else:
-            print(data, f"Не удалось выполнить запрос. Код состояния: {response.status_code}")
-            return None
+            print("verification popup is not")     
+
         
     def open_deposit_popup(self):
         open_deposit_popup = self.browser.find_element(*CasinoPageLocatorsBilbet.INPUT_DEP)
         open_deposit_popup.click()
+        print("<<<1>>>")
 
     def select_paytm(self):
         open_deposit_popup = self.browser.find_element(*CasinoPageDepositLocatorsBilbet.SELECT_PAYTM)
         open_deposit_popup.click()
+        print("<<<2>>>")
 
     def input_amount(self):
+        time.sleep(2)
         input_amount = self.browser.find_element(*CasinoPageDepositLocatorsBilbet.SELECT_DEPOSIT_AMOUNT)       
         input_amount.click()
+        print("<<<3>>>")
 
     def click_pay_button(self):
         click_pay_button = self.browser.find_element(*CasinoPageDepositLocatorsBilbet.PAY_BUTTON)       
         click_pay_button.click()
+        print("<<<4>>>")
 
-    def input_transaction_id(self):
+    def input_transaction_id(self, transaction_id):
         input_transaction_id = self.browser.find_element(*CasinoPageDepositLocatorsBilbet.INPUT_TRANSACTION_ID)
-        input_transaction_id.send_keys(self.create_manual_transaction_for_kassma())       
+        input_transaction_id.send_keys(transaction_id)
+        time.sleep(3)       
      

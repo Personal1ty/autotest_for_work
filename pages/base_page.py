@@ -41,6 +41,8 @@ class BasePage():
             return False
 
         return True
+    
+    
 
     #def find_element(self, how, what):
     #    try:
