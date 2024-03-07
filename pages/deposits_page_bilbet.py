@@ -4,11 +4,7 @@ from .locators import GeneralPageLocators
 from .locators import CasinoPageDepositLocatorsBilbet
 import time
 from selenium.webdriver.common.by import By
-import json
-import requests
 import time
-from dotenv import load_dotenv
-import os
 
 
 
@@ -19,18 +15,12 @@ class CasinoDepositsPage(BasePage):
         time.sleep(3)
         deposit_popup = self.is_element_present(*GeneralPageLocators.CLOSE_MOBILE_DEP_POPUP)
         if deposit_popup == True:
+           print("deposit popup close")
            return self.browser.find_element(*GeneralPageLocators.CLOSE_MOBILE_DEP_POPUP).click()
         else:
             print("there is money in the account") 
-        print("deposit popup close")
+        
 
-    def vpn_message_close(self):
-        vpn_message_close = self.is_element_present(*GeneralPageLocators.VPN_MESSAGE)
-        if vpn_message_close == True:
-            print("VPN messge close")
-            return vpn_message_close.click()
-        else:
-            print("VPN message is not")
             
 
     def verification_popup_close(self):            
@@ -47,6 +37,9 @@ class CasinoDepositsPage(BasePage):
         open_deposit_popup = self.browser.find_element(*CasinoPageLocatorsBilbet.INPUT_DEP)
         open_deposit_popup.click()
         print("<<<1>>>")
+
+    def check_deposit_categories_carousel(self):
+        check_deposit_categories_carousel = self.browser.find_element(By.CSS_SELECTOR, '[class="deposit-categories-carousel__category swiper-slide deposit-categories-carousel__category--active"]')  
 
     def select_paytm(self):
         open_deposit_popup = self.browser.find_element(*CasinoPageDepositLocatorsBilbet.SELECT_PAYTM)

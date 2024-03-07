@@ -5,6 +5,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 import math
 import logging
+import yaml
 
 #пока не нужен
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', filename='app.log')
@@ -42,7 +43,11 @@ class BasePage():
 
         return True
     
-    
+
+    @staticmethod
+    def load_config():
+        with open("config.yaml") as f:
+            return yaml.load(f, Loader=yaml.FullLoader)
 
     #def find_element(self, how, what):
     #    try:
