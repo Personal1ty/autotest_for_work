@@ -1,9 +1,6 @@
 from .base_page import BasePage
 from .locators import LoginPageLocatorsBilbet
 from .locators import GeneralPageLocators
-import time
-#from accesses_config import Accesses
-import yaml
 
 
 class LoginPageBilbet(BasePage):
@@ -59,9 +56,7 @@ class LoginPageBilbet(BasePage):
         print("check error auth for phone popup")        
     #ввожу логин    
     def finall_auth_user(self):
-        with open("config.yaml") as f:
-            config = yaml.load(f, Loader=yaml.FullLoader)
-
+        config = BasePage.load_config()
         self.input_email().send_keys(config['username_and_pass_for_bilbet'])
         self.clicked_input_password_button().send_keys(config['username_and_pass_for_bilbet'])
         self.authorization_button()
